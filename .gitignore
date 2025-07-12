@@ -1,34 +1,85 @@
-# Gradle files
-.gradle/
-build/
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>السبحة الإلكترونية</title>
+  <style>
+    body {
+      background-color: #f0f4f7;
+      font-family: 'Tahoma', sans-serif;
+      text-align: center;
+      padding-top: 80px;
+      color: #333;
+    }
+    h1 {
+      color: #006699;
+    }
+    #count {
+      font-size: 64px;
+      margin: 30px 0;
+    }
+    button {
+      font-size: 20px;
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #tasbeehBtn {
+      background-color: #00aaff;
+      color: white;
+    }
+    #resetBtn {
+      background-color: #999;
+      color: white;
+    }
+    select {
+      font-size: 18px;
+      padding: 5px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
 
-# Local configuration file (sdk path, etc)
-local.properties
+  <h1>📿 سبّح الله</h1>
 
-# Log/OS Files
-*.log
+  <select id="zikrType">
+    <option value="سبحان الله">سبحان الله</option>
+    <option value="الحمد لله">الحمد لله</option>
+    <option value="الله أكبر">الله أكبر</option>
+    <option value="لا إله إلا الله">لا إله إلا الله</option>
+    <option value="استغفر الله">استغفر الله</option>
+  </select>
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.aab
-*.apk
-output-metadata.json
+  <div id="count">0</div>
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+  <button id="tasbeehBtn">سبّح الآن</button>
+  <button id="resetBtn">إعادة</button>
 
-# Keystore files
-*.jks
-*.keystore
+  <script>
+    let count = 0;
+    const countDisplay = document.getElementById("count");
+    const btn = document.getElementById("tasbeehBtn");
+    const reset = document.getElementById("resetBtn");
+    const zikr = document.getElementById("zikrType");
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
+    btn.onclick = () => {
+      count++;
+      countDisplay.textContent = count;
+      btn.textContent = zikr.value;
+      if (count === 33 || count === 100) {
+        alert("🌟 جزاك الله خيرًا! لقد وصلت إلى " + count + " مرة.");
+      }
+    };
 
-# Android Profiling
-*.hprof
+    reset.onclick = () => {
+      count = 0;
+      countDisplay.textContent = count;
+    };
+  </script>
+
+</body>
+</html>
